@@ -1,0 +1,12 @@
+[
+  { "id": 1, "name": "Ali Raza", "amount": 3500, "is_male": true },
+  { "id": 2, "name": "Ayesha Khan", "amount": 4200, "is_male": false },
+  { "id": 3, "name": "Hamza Ahmed", "amount": 5100, "is_male": true },
+  { "id": 4, "name": "Fatima Noor", "amount": 2800, "is_male": false },
+  { "id": 5, "name": "Usman Ali", "amount": 6000, "is_male": true },
+  { "id": 6, "name": "Hira Salman", "amount": 3900, "is_male": false },
+  { "id": 7, "name": "Zain Abbas", "amount": 4700, "is_male": true },
+  { "id": 8, "name": "Sana Javed", "amount": 3200, "is_male": false },
+  { "id": 9, "name": "Bilal Khan", "amount": 5300, "is_male": true },
+  { "id": 10, "name": "Maryam Fatima", "amount": 2600, "is_male": false }
+]
