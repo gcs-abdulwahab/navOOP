@@ -1,23 +1,56 @@
-import type { User } from "../UserType";
+import { useEffect, useState } from "react";
+import type { User as UserType } from "../UserType";
 
 interface ShowUsersComponentProps {
-	data: User[];
+	apiUrl: string;
 }
 
-// This component is now a pure presentational component.
-// It relies directly on the data prop so that when App updates its users state, the new list renders.
-const ShowUsersComponent = ({ data }: ShowUsersComponentProps) => {
+const ShowUsersComponent = ({ apiUrl }: ShowUsersComponentProps) => {
+	const [users, setUsers] = useState<UserType[]>([]);
+	const [loading, setLoading] = useState<boolean>(true);
+	const [error, setError] = useState<string | null>(null);
+
+	useEffect(() => {
+		setLoading(true);
+		setError(null);
+
+		fetch(apiUrl)
+			.then((response) => {
+				if (!response.ok) {
+					throw new Error(`HTTP error! status: ${response.status}`);
+				}
+				return response.json();
+			})
+			.then((data) => {
+				console.log(data);
+
+				setUsers(data.users); // API returns { users: [...], total: ..., skip: ..., limit: ... }
+			})
+			.catch((error) => {
+				console.error("Error fetching users:", error);
+				setError(error.message);
+			})
+			.finally(() => {
+				setLoading(false);
+			});
+	}, [apiUrl]); // Re-fetch when apiUrl changes
 
 	return (
 		<div>
 			<h2>Show Users Component</h2>
-			<ul>
-				{data.map((user) => (
-					<li key={user.id}>
-						{user.firstName} {user.lastName} - {user.email}
-					</li>
-				))}
-			</ul>
+
+			{loading && <div>Loading users...</div>}
+			{error && <div style={{ color: "red" }}>Error: {error}</div>}
+			{users.length === 0 && <div>No users found</div>}
+			{users.length > 0 && (
+				<ul>
+					{users.map((user) => (
+						<li key={user.id}>
+							{user.firstName} {user.lastName} - {user.email}
+						</li>
+					))}
+				</ul>
+			)}
 		</div>
 	);
 };
