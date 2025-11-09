@@ -1,13 +1,15 @@
 import "./App.css";
-import ShowUsersComponent from "./components/ShowUsersComponent";
+import SimpleLoadingComponent from "./components/SimpleLoadingComponent";
+import SimpleLoadingNavComponent from "./components/SimpleLoadingNavComponent";
 
 function App() {
-	
-	
 	return (
 		<>
 			<h1 className="text-2xl">Ready</h1>
-			<ShowUsersComponent apiUrl="https://dummyjson.com/users" />
+			{/* <MyUserComponent /> */}
+			{/* <SimpleLoadingComponent /> */}
+
+			<SimpleLoadingNavComponent />
 			
 		</>
 	);
