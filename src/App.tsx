@@ -1,11 +1,11 @@
 import "./App.css";
-import ContainerComponent from "./components/Novel/ContainerComponent";
+import EventBubbleComponent from "./components/EventBubbleComponent";
 
 function App() {
 	return (
 		<>
 			<h1 className="text-2xl">Ready</h1>
-			<ContainerComponent />	
+			<EventBubbleComponent />
 		</>
 	);
 }
