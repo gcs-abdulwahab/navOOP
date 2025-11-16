@@ -1,69 +1,36 @@
-interface Coordinates {
-	lat: number;
-	lng: number;
-}
+/**
+ * Represents a user entity with core required fields and optional extended properties.
+ * 
+ * @property id - Unique identifier for the user
+ * @property name - Full name of the user
+ * @property username - Username for the user account
+ * @property email - Email address of the user
+ * @property phone - Optional contact phone number
+ * @property website - Optional personal or professional website URL
+ * @property address - Optional physical address details
+ * @property company - Optional company/organization information
+ */
+export type User = {
+  id: number;
+  name: string;
+  username: string;
+  email: string;
 
-interface Address {
-	address: string;
-	city: string;
-	state: string;
-	stateCode: string;
-	postalCode: string;
-	coordinates: Coordinates;
-	country: string;
-}
-
-interface Bank {
-	cardExpire: string;
-	cardNumber: string;
-	cardType: string;
-	currency: string;
-	iban: string;
-}
-
-interface Company {
-	department: string;
-	name: string;
-	title: string;
-	address: Address;
-}
-
-interface Crypto {
-	coin: string;
-	wallet: string;
-	network: string;
-}
-
-interface User {
-	id: number;
-	firstName: string;
-	lastName: string;
-	maidenName: string;
-	age: number;
-	gender: "male" | "female";
-	email: string;
-	phone: string;
-	username: string;
-	password: string;
-	birthDate: string;
-	image: string;
-	bloodGroup: string;
-	height: number;
-	weight: number;
-	eyeColor: string;
-	hair: { color: string; type: string };
-	ip: string;
-	address: Address;
-	macAddress: string;
-	university: string;
-	bank: Bank;
-	company: Company;
-	ein: string;
-	ssn: string;
-	userAgent: string;
-	crypto: Crypto;
-	role: "admin" | "moderator" | "user";
-}
-
-export type { User };
-
+  phone?: string;
+  website?: string;
+  address?: {
+    street: string;
+    suite: string;
+    city: string;
+    zipcode: string;
+    geo: {
+      lat: string;
+      lng: string;
+    };
+  };
+  company?: {
+    name: string;
+    catchPhrase: string;
+    bs: string;
+  };
+};
